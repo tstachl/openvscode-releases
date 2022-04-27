@@ -26,7 +26,7 @@ jobs:
             try {
               const { data: latestRelease } = await github.rest.repos.getLatestRelease({
                 owner: 'gitpod-io',
-                repo: 'openvscode-server'
+                repo: 'openvscode-server',
               });
 
               const releaseTag = latestRelease.tag_name;
@@ -42,8 +42,8 @@ jobs:
             try {
               const response = await github.rest.repos.getBranch({
                 owner: 'gitpod-io',
-                repo: 'openvscode-server'
-                branch: nextRelease
+                repo: 'openvscode-server',
+                branch: nextRelease,
               });
               upstreamReleaseBranch = response.data;
               console.log(upstreamReleaseBranch);
@@ -57,7 +57,7 @@ jobs:
               const response = await github.rest.repos.getBranch({
                 owner: 'tstachl',
                 repo: 'openvscode-releases',
-                branch: nextRelease
+                branch: nextRelease,
               });
               releaseBranch = response.data;
             } catch (e) {

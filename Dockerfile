@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /home/
 
 ARG RELEASE_TAG
-ARG RELEASE_ORG="gitpod-io"
+ARG RELEASE_ORG="tstachl"
 ARG OPENVSCODE_SERVER_ROOT="/home/.openvscode-server"
 
 # Downloading the latest VSC Server release and extracting the release archive
@@ -32,7 +32,7 @@ RUN if [ -z "${RELEASE_TAG}" ]; then \
     cp ${OPENVSCODE_SERVER_ROOT}/bin/remote-cli/openvscode-server ${OPENVSCODE_SERVER_ROOT}/bin/remote-cli/code && \
     rm -f ${RELEASE_TAG}-linux-${arch}.tar.gz
 
-ARG USERNAME=openvscode-server
+ARG USERNAME=code
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
@@ -53,7 +53,6 @@ WORKDIR /home/workspace/
 
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
-    HOME=/home/workspace \
     EDITOR=code \
     VISUAL=code \
     GIT_EDITOR="code --wait" \
